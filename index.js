@@ -61,14 +61,22 @@ function getPoemData(data, n) {
         }
       })
       const poem = target.children('.contson').text()
-      const poemStr = poem.replace(/\n/g, '').replace(/，/g, '|').replace(/。/g, '|')
-      const poemArr = poemStr.split('|')
+      let explain
+      $('.main3 .left .sons').each((index, element) => {
+        if (index === 1) {
+          explain = $(element).children('.contyishang').children('p').text().replace('译文', '')
+        }
+      })
+      console.log(explain)
+      // const poemStr = poem.replace(/\n/g, '').replace(/，/g, '|').replace(/。/g, '|')
+      // const poemArr = poemStr.split('|')
       items.push([
         title,
         dynasty,
         author,
         poem,
-        ...poemArr
+        explain
+        // ...poemArr
       ])
       if (n < urls.length - 1) {
         getPoemData(items, n+1)
